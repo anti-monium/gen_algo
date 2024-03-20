@@ -1,0 +1,15 @@
+CC := g++ -O3 -fopenmp -g -fsanitize=address
+CFLAGS := -c -Wall
+SOURCES =  GenAlgo.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+
+ALG := GenAlgo
+
+ga:: $(OBJECTS)
+	$(CC)  $(OBJECTS) -o $@
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) $^
+
+clean:
+	rm -rf  *.o
